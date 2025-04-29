@@ -70,8 +70,8 @@ if (!isset($_SESSION)) {
                         }
 
                         // Opções para todos os utilizadores
-                        echo '<li><a class="dropdown-item" href="minhas_reservas.php">Minha conta</a></li>';
-                        echo '<li><a class="dropdown-item" href="meus_pedidos.php">Minha mensagens</a></li>';
+                        echo '<li><a class="dropdown-item" href="minha_conta.php">Minha conta</a></li>';
+                        echo '<li><a class="dropdown-item" href="mensagem.php">Minha mensagens</a></li>';
                         echo '<li><hr class="dropdown-divider"></li>';
 
                         // Opção para editar o perfil
