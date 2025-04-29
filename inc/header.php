@@ -55,7 +55,6 @@ if (!isset($_SESSION)) {
                         // Verifica se o usuário é administrador (Perfil = 1 ou 3)
                         $is_admin = ($_SESSION['perfil'] == 1 || $_SESSION['perfil'] == 3);
 
-
                         echo '<header class="p-3 mb-3 border-bottom">
                                 <div class="dropdown text-end me-5">
                                     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

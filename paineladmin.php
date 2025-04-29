@@ -1,5 +1,4 @@
 <?php
-// Iniciar sessão
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -10,9 +9,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-// Verificar se o utilizador é administrador
-if ($_SESSION['perfil'] != 1) { // Perfil 1 é administrador
-    header('Location: paineladmin.php');
+// Verificar se o utilizador é administrador (Perfil = 1 ou 3)
+if ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3) {
+    header('Location: home.php'); // Redireciona para a página inicial se não for administrador
     exit;
 }
 
