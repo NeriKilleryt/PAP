@@ -1,0 +1,78 @@
+/* --------------- reset --------------- */
+*{
+    margin:0; 
+    padding: 0; 
+    font-size: 100%;
+    box-sizing: border-box; /* evita problemas com os paddings */
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul{ list-style: none;}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+a:hover{ opacity: 1;}
+/* Fim reset */
+
+
+/* --------------- header --------------- */
+header{
+    background-color: #fad586;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+header .logo{
+    width: 200px;
+}
+
+header nav ul{
+    display: flex;
+    margin-right: 20px;
+}
+
+header ul li a {
+    color: #191c03;
+}
+
+header ul li {
+    margin: 0 15px;
+}
+
+/* retira a margem atribuída anteriormente no primeiro elemento */
+header  ul li:first-child{
+    margin-left: 0;
+}
+
+/* retira a margem atribuída anteriormente no último elemento */
+header ul li:last-child{
+    margin-right: 0;
+}
+
+/* Quando atingir 700px - modo responsivo */
+@media (max-width: 700px){
+    header{flex-direction: column;}
+    header .logo{margin-block: 15px;}
+}
+/* Fim header */
+
+.container{
+    background-color: #c3c333;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    padding: 20px 50px;
+}
+
+.container .col{
+    width: 500px;
+    background-color: red;
+    margin-top: 10px;
+} 
