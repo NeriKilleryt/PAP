@@ -66,7 +66,6 @@ if (!isset($_SESSION)) {
                             // Opções para administradores
                             echo '<li><a class="dropdown-item" href="paineladmin.php">Painel de administração</a></li>';
                             echo '<li><a class="dropdown-item" href="add_tool.php">Adicionar Ferramenta</a></li>';
-                            echo '<li><a class="dropdown-item" href="promocoes.php">Promoções</a></li>';
                             echo '<li><hr class="dropdown-divider"></li>';
                         }
 
