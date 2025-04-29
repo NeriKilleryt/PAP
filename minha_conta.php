@@ -5,11 +5,16 @@ if (!isset($_SESSION)) {
 }
 
 // Define o título da página
-$title = 'Minha conta';
+$title = 'Minha Conta';
+// Verifica se o utilizador está logado
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+    }
 require(__DIR__ . '/inc/header.php');
 
 // Conecta ao banco de dados
-require __DIR__ . '/inc/config.php'; // Caminho absoluto para o arquivo config.php
+include 'inc/config.php';
 $conn = connect_db();
 
 try {
