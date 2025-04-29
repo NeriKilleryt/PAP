@@ -12,7 +12,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 // Verificar se o utilizador é administrador
 if ($_SESSION['perfil'] != 1) { // Perfil 1 é administrador
-    header('Location: home.php');
+    header('Location: paineladmin.php');
     exit;
 }
 
