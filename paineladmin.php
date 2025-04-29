@@ -96,7 +96,7 @@ try {
                     <td>
                         <a href="read.php?id=<?php echo htmlspecialchars($row['ID']); ?>" title="Editar Registo"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="delete.php?id=<?php echo htmlspecialchars($row['ID']); ?>" title="Eliminar Registo"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="delete.php" title="Eliminar Registo"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             <?php endwhile; ?>
