@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 }
 
 // Define o título da página
-$title = 'Index';
+$title = 'Minha conta';
 require(__DIR__ . '/inc/header.php');
 
 // Conecta ao banco de dados
