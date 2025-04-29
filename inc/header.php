@@ -3,7 +3,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,12 +69,12 @@ if (!isset($_SESSION)) {
                             echo '<li><a class="dropdown-item" href="add_tool.php">Adicionar Ferramenta</a></li>';
                             echo '<li><a class="dropdown-item" href="promocoes.php">Promoções</a></li>';
                             echo '<li><hr class="dropdown-divider"></li>';
-                        } else {
-                            // Opções para utilizadores comuns
-                            echo '<li><a class="dropdown-item" href="minhas_reservas.php">Minha conta</a></li>';
-                            echo '<li><a class="dropdown-item" href="meus_pedidos.php">Minha mensagens</a></li>';
-                            echo '<li><hr class="dropdown-divider"></li>';
                         }
+
+                        // Opções para todos os utilizadores
+                        echo '<li><a class="dropdown-item" href="minhas_reservas.php">Minha conta</a></li>';
+                        echo '<li><a class="dropdown-item" href="meus_pedidos.php">Minha mensagens</a></li>';
+                        echo '<li><hr class="dropdown-divider"></li>';
 
                         // Opção para editar o perfil
                         if (isset($_SESSION['id'])) {
