@@ -3,38 +3,42 @@
 require(__DIR__ . '/inc/header.php');
 
 $title = 'Contato';
+// Conectar ao banco de dados
+include 'inc/config.php'; // Certifique-se de que o caminho está correto
+$conn = connect_db();
+
+// Buscar as ferramentas no banco de dados
+try {
+    $sql = "SELECT * FROM loja";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $loja = $stmt->fetchAll(PDO::FETCH_ASSOC); // Alterado para $loja
+} catch (PDOException $e) {
+    die("Erro ao buscar loja: " . $e->getMessage());
+}
 ?>
-
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Contatos</h1>
-    <p class="text-center">Entre em contato com as lojas abaixo para mais informações:</p>
-
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <table class="table table-bordered table-hover">
-                <thead class="table-dark">
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">Contacto</h1>
+    <?php if (!empty($loja)): ?>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Contacto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($loja as $lojas): ?>
                     <tr>
-                        <th>Loja</th>
-                        <th>Telefone</th>
+                        <td><?php echo htmlspecialchars($lojas['Nome']); ?></td>
+                        <td><?php echo htmlspecialchars($lojas['Contacto']); ?></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Leroy Merlin</td>
-                        <td>21 194 4944</td>
-                    </tr>
-                    <tr>
-                        <td>Aury MAT</td>
-                        <td>261 417 200</td>
-                    </tr>
-                    <tr>
-                        <td>Worten</td>
-                        <td>21 015 5222</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="text-center">Nenhuma contacto encontrada no momento.</p>
+    <?php endif; ?>
 </div>
 
 <?php
