@@ -48,7 +48,10 @@ try {
                         <img src="<?php echo htmlspecialchars($ferramenta['imagem']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($ferramenta['nome']); ?>">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <?php echo htmlspecialchars($ferramenta['nome']); ?></h5>
+                                <a href="categoria.php?id=<?php echo htmlspecialchars($ferramenta['id']); ?>">
+                                    <?php echo htmlspecialchars($ferramenta['nome']); ?>
+                                </a>
+                            </h5>
                         </div>
                     </div>
                 </div>
