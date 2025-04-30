@@ -38,7 +38,7 @@ if ($query) {
                 echo "<p class='card-text'>" . htmlspecialchars($row['descricao']) . "</p>";
                 echo "</div>";
                 echo "<div class='card-footer text-center'>";
-                echo "<a href='detalhes.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-primary'>Ver Detalhes</a>";
+                echo "<a href='detalhes.php?id=" . htmlspecialchars($row['id']) . "&query=" . urlencode($query) . "' class='btn btn-primary'>Ver Detalhes</a>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";

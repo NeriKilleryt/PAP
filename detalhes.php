@@ -10,13 +10,16 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
+// Captura o termo de pesquisa, se existir
+$query = isset($_GET['query']) ? trim($_GET['query']) : '';
+
 // Conecta ao banco de dados
 require __DIR__ . '/inc/config.php';
 $conn = connect_db();
 
 try {
     // Busca os detalhes da ferramenta pelo ID
-    $sql = "SELECT * FROM ferramentas WHERE id = :id";
+    $sql = "SELECT f.*, m.nome AS nomeMarca FROM ferramentas f LEFT JOIN marca m ON f.idMarca = m.id WHERE f.id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->execute([':id' => $id]);
 
@@ -53,7 +56,7 @@ try {
             <h3>Descrição</h3>
             <p><?php echo htmlspecialchars($ferramenta['descricao']); ?></p>
             <h3>Marca</h3>
-            <p><?php echo htmlspecialchars($ferramenta['idMarca']); ?></p>
+            <p><?php echo htmlspecialchars($ferramenta['nomeMarca'] ?? 'Marca desconhecida'); ?></p>
 
             <h3>Informações das Lojas</h3>
             <ul>
@@ -72,7 +75,11 @@ try {
 
     <!-- Botão para voltar -->
     <div class="text-center mt-4">
-        <a href="search.php" class="btn btn-secondary">Voltar</a>
+        <?php if ($query): ?>
+            <a href="search.php?query=<?php echo urlencode($query); ?>" class="btn btn-secondary">Voltar</a>
+        <?php else: ?>
+            <a href="search.php" class="btn btn-secondary">Voltar</a>
+        <?php endif; ?>
     </div>
 </div>
 
