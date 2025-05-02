@@ -43,19 +43,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Minha Conta</h1>
-
-    <div class="row">
-        <!-- Coluna principal -->
-        <div class="col-md-12">
-            <p class="lead text-center">
-                Aqui você pode visualizar e editar suas informações pessoais.
-            </p>
-        </div>
-    </div>
-</div>
-
 <div class="container mt-4">
     <h1 class="mb-4 text-center">Detalhes da Conta</h1>
     <div class="row g-4">
