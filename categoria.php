@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="public\css\bootstrap.min.css">
 <?php
+require(__DIR__ . '/inc/header.php');
+$title = 'Categoria';
 // Captura o ID da URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -85,4 +86,7 @@ if ($id > 0) {
     echo "<h1>ID inválido ou não fornecido</h1>";
 }
 ?>
-<script src="public\js\bootstrap.bundle.min.js"></script>
+<?php
+// Incluir o rodapé
+require __DIR__ . '/inc/footer.php';
+?>
