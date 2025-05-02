@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Mar-2025 às 16:40
+-- Tempo de geração: 02-Maio-2025 às 13:41
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -50,46 +50,53 @@ INSERT INTO `armazem` (`pin`, `Nome`, `Localizacao`, `Id_Loja`) VALUES
 --
 
 CREATE TABLE `categoria` (
-  `Nome` varchar(255) NOT NULL,
-  `Funcao` varchar(255) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `Funcao` varchar(255) DEFAULT NULL,
+  `imagem` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `categoria`
 --
 
-INSERT INTO `categoria` (`Nome`, `Funcao`) VALUES
-('Broca', 'Perfurar materiais'),
-('Chave de fenda', 'Apertar parafusos'),
-('Martelo', 'Ferramenta para bater pregos'),
-('Serra', 'Cortar materiais diversos');
+INSERT INTO `categoria` (`id`, `nome`, `Funcao`, `imagem`) VALUES
+(1, 'Furadeira\r\n', 'Perfurar materiais', 'uploads/transferir (4).jpg\r\n\r\n'),
+(2, 'Chave-fenda', 'Apertar parafusos', 'uploads/transferir.png'),
+(3, 'Martelo', 'Ferramenta para bater pregos', 'uploads/transferir (5).jpg'),
+(4, 'Serra', 'Cortar materiais diversos', 'uploads/transferir.jpg'),
+(5, 'Alicate', ' agarrar, segurar e cortar fios e cabos, seja em materiais macios ou mais resistentes.', 'uploads/Alicate.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ferramenta`
+-- Estrutura da tabela `ferramentas`
 --
 
-CREATE TABLE `ferramenta` (
-  `Ean` varchar(13) NOT NULL,
-  `Nome` varchar(255) DEFAULT NULL,
-  `Peso` int(255) DEFAULT NULL,
-  `Preco` float DEFAULT NULL,
-  `Nome_Categoria` varchar(255) DEFAULT NULL,
-  `Id_Marca` int(255) DEFAULT NULL,
-  `Id_Users` int(255) DEFAULT NULL,
-  `pin_armazém` int(255) DEFAULT NULL
+CREATE TABLE `ferramentas` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `idCategoria` int(255) NOT NULL,
+  `idMarca` int(255) NOT NULL,
+  `imagem` varchar(255) NOT NULL,
+  `loja1_nome` varchar(255) DEFAULT NULL,
+  `loja1_link` varchar(255) DEFAULT NULL,
+  `loja2_nome` varchar(255) DEFAULT NULL,
+  `loja2_link` varchar(255) DEFAULT NULL,
+  `loja3_nome` varchar(255) DEFAULT NULL,
+  `loja3_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `ferramenta`
+-- Extraindo dados da tabela `ferramentas`
 --
 
-INSERT INTO `ferramenta` (`Ean`, `Nome`, `Peso`, `Preco`, `Nome_Categoria`, `Id_Marca`, `Id_Users`, `pin_armazém`) VALUES
-('EAN001', 'Martelo de ferro', 500, 19.99, 'Martelo', 1, 1, 1),
-('EAN002', 'Serra elétrica', 3000, 129.99, 'Serra', 1, 2, 2),
-('EAN003', 'Chave Philips', 250, 9.99, 'Chave de fenda', 3, 3, 3),
-('EAN030', 'Broca de titânio', 700, 45.99, 'Broca', 30, 30, 30);
+INSERT INTO `ferramentas` (`id`, `nome`, `descricao`, `idCategoria`, `idMarca`, `imagem`, `loja1_nome`, `loja1_link`, `loja2_nome`, `loja2_link`, `loja3_nome`, `loja3_link`) VALUES
+(1, 'Martelo', 'O martelo é uma ferramenta usada na indústria para golpear objetos.', 3, 4, 'uploads/Martelo.jpg', 'Leroy Merlin', 'https://www.leroymerlin.pt/produtos/ferramentas/ferramentas-de-mao/martelos/', 'Aury Mat', 'https://aurymat.com/categoria-produto/ferramentas-bricolage-e-construcao/ferramentas-de-pedreiro/martelos/', 'Worten', 'https://www.worten.pt/bricolage/ferramentas/ferramentas-manuais/martelos'),
+(2, 'Alicate', 'O alicate é uma ferramenta articulada usada para multiplicar a força aplicada pelo usuário.', 5, 2, 'uploads/Alicate.jpg', 'Ferramentas', 'https://ferramentas.pt/ferramentas/ferramentas/alicates', 'Leroy Merlin', 'https://www.leroymerlin.pt/produtos/ferramentas/ferramentas-de-mao/alicates-e-turqueses/', 'Worten', 'https://www.worten.pt/bricolage/ferramentas/ferramentas-manuais/alicates'),
+(3, 'Chave de Fendas', 'A chave de fendas é uma ferramenta usada para apertar ou soltar parafusos.', 2, 3, 'uploads/Chave de Fendas.jpg', 'Leroy Merlin', 'https://www.leroymerlin.pt/search?q=chave+de+fendas', 'Worten', 'https://www.worten.pt/search?query=chave+de+fendas', 'Aki', 'https://www.aki.pt/ferramentas/ferramentas-manuais/chaves-de-fendas'),
+(4, 'Furadeira', 'Furar quase todos os tipos de materiais de construção.', 1, 4, 'uploads/transferir (4).jpg', 'Worten', 'https://www.worten.pt/search?query=furadeira', 'Leroy Merlin', 'https://www.leroymerlin.pt/search?q=furadeira&autocomplete=top', 'Ferramentas', 'https://ferramentas.pt/catalogsearch/result/?q=furadeira');
 
 -- --------------------------------------------------------
 
@@ -109,9 +116,9 @@ CREATE TABLE `loja` (
 --
 
 INSERT INTO `loja` (`ID`, `Nome`, `Morada`, `Contacto`) VALUES
-(1, 'Loja Centro', 'Rua X, 100', '955555555'),
-(2, 'Loja Norte', 'Avenida Y, 200', '966666666'),
-(30, 'Loja Sul', 'Rua Z, 300', '977777777');
+(1, 'Leroy Merlin', 'Av. da Bélgica, Est, Nac. 2 Km 170 550, 3510-159 Viseu', '21 194 4944'),
+(2, 'Worten', 'Av. da Bélgica 150 ', '21 015 5222'),
+(30, 'Ferramentas', 'R. Virgílio Correia 14B, 1600-223 Lisboa', '21 226 7000');
 
 -- --------------------------------------------------------
 
@@ -121,8 +128,8 @@ INSERT INTO `loja` (`ID`, `Nome`, `Morada`, `Contacto`) VALUES
 
 CREATE TABLE `marca` (
   `ID` int(255) NOT NULL,
-  `Morada` varchar(255) DEFAULT NULL,
   `Nome` varchar(255) DEFAULT NULL,
+  `Morada` varchar(255) DEFAULT NULL,
   `Contacto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -130,11 +137,11 @@ CREATE TABLE `marca` (
 -- Extraindo dados da tabela `marca`
 --
 
-INSERT INTO `marca` (`ID`, `Morada`, `Nome`, `Contacto`) VALUES
-(1, 'Viseu, Rua A, 123', 'WUrth', '911111111'),
-(2, 'Avenida B, 456,Viseu', 'DeWalt', '922222222'),
-(3, 'Travessa C, 789', 'Wurth', '933333333'),
-(30, 'Rua Z, 321', 'Fluke', '944444444');
+INSERT INTO `marca` (`ID`, `Nome`, `Morada`, `Contacto`) VALUES
+(1, 'WUrth', NULL, '911111111'),
+(2, 'DeWalt', NULL, '922222222'),
+(3, 'Wurth', NULL, '933333333'),
+(4, 'Bellota', NULL, '218268474');
 
 -- --------------------------------------------------------
 
@@ -163,33 +170,54 @@ INSERT INTO `mensagem` (`Id`, `ean`, `Preco_Ferramenta`, `Nome_Marca`, `Texto`) 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `mensagens`
+--
+
+CREATE TABLE `mensagens` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `mensagem` text NOT NULL,
+  `data_envio` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `mensagens`
+--
+
+INSERT INTO `mensagens` (`id`, `nome`, `email`, `mensagem`, `data_envio`) VALUES
+(1, 'loiro', 'loiro@gmail.com', 'gay', '2025-04-03 14:17:21');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users`
 --
 
 CREATE TABLE `users` (
-  `ID` int(255) NOT NULL COMMENT '1 = admin; 2 = utilizador; 3 = colaborador',
+  `ID` int(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `Nome` varchar(255) DEFAULT NULL,
   `Data_nascimento` date DEFAULT current_timestamp(),
   `Contacto` varchar(255) DEFAULT NULL,
-  `Perfil` tinyint(4) DEFAULT NULL,
+  `Perfil` tinyint(4) DEFAULT NULL COMMENT '1 = admin; 2 = utilizador; 3 = colaborador',
   `Email` varchar(150) DEFAULT NULL,
-  `Data_registo` date NOT NULL DEFAULT current_timestamp()
+  `Data_registo` date NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(255) DEFAULT NULL,
+  `imagem` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`ID`, `password`, `Nome`, `Data_nascimento`, `Contacto`, `Perfil`, `Email`, `Data_registo`) VALUES
-(1, '$2y$10$8YmzdTEV09XEOsf6zq4VzOQM8qPpwRBwjF42L2j5NmP/c6Fm36a6W', 'Sousa', '2025-03-10', '931425243', 1, 'sousa@gmail.com', '2025-03-10'),
-(2, '$2y$10$Ew7eteGI.6Rx.6/HrA/tOegucZIiMgQhFo.xN1Sr0oYiOXAgDiX42', 'Titirri', '2025-03-10', '365328523\r\n', 2, 'titirri@gmail.com', '2025-03-10'),
-(3, '$2y$10$TDq0YuCKeykx0/ryzMCwuee4SJ744fp9hGk.3.O3DVPrO2svWktiu', 'Loiro', '2025-03-10', '985123456', 3, 'loiro@gmail.com', '2025-03-10'),
-(4, '$2y$10$3838VZDQ.ciosHxUHGcxeef9BYjjzxqTwYL3hwkOdU4noSuW.OtZm', 'Gomes', '2025-03-11', '951564146', 3, 'gomes@gmail.com', '2025-03-11'),
-(5, '$2y$10$L5l98kwMMBHKBTqebJZaOeS3K/CCLdH6lOnvjAdJRM.G9pRykDv.i', 'Gonçalo', '2025-03-11', '913456876', 3, 'goncalo.m.neri@hotmail.com', '2025-03-11'),
-(6, '$2y$10$eZXBhDz5qvpN.sTvROaE8.uIdjv7nG5yfsyF8BOnD7vFr21.DGmFK', 'Machado', '2025-03-12', '914875146', 1, 'machado@gmail.com', '2025-03-12'),
-(7, '$2y$10$b.w0D5z0CUBu7saK0q9.keMutK7ZGRh.fXCGrz7rtjpoPakBA2qaO', 'Brinca', '2025-03-12', '986156864', 3, 'Brinca@gmail.com', '2025-03-12'),
-(8, '$2y$10$OnXCf/izQLnk0yuLs6CSpeXZLUsxfz2cy9rQ2ZuB9vvCV4Omxvba6', 'goncalo', '2025-03-12', '985157864', 3, 'goncalo.m.neri16@hotmail.com', '2025-03-12');
+INSERT INTO `users` (`ID`, `password`, `Nome`, `Data_nascimento`, `Contacto`, `Perfil`, `Email`, `Data_registo`, `status`, `imagem`) VALUES
+(1, '$2y$10$TDq0YuCKeykx0/ryzMCwuee4SJ744fp9hGk.3.O3DVPrO2svWktiu', 'Loiro', '2025-03-10', '985123456', 1, 'loiro@gmail.com', '2025-03-10', 'Ativo\r\n', ''),
+(2, '$2y$10$mMYjqw0OLbo.ok8q5Rp57uRy5qGQTFJjyPsAnLsY.yeS5rghm/3QO', 'Gomes', '2025-03-10', '365328523', 3, 'Andrewgomes@gmail.com', '2025-03-10', 'Ativo', 'uploads/transferir.png'),
+(3, '$2y$10$eZXBhDz5qvpN.sTvROaE8.uIdjv7nG5yfsyF8BOnD7vFr21.DGmFK', 'Machado', '2025-03-12', '914875146', 1, 'machado@gmail.com', '2025-03-12', 'Ativo\r\n', ''),
+(4, '$2y$10$b.w0D5z0CUBu7saK0q9.keMutK7ZGRh.fXCGrz7rtjpoPakBA2qaO', 'Brinca', '2025-03-12', '986156864', 3, 'Brinca@gmail.com', '2025-03-12', 'Ativo', 'uploads/transferir (1).jpg'),
+(5, '$2y$10$OnXCf/izQLnk0yuLs6CSpeXZLUsxfz2cy9rQ2ZuB9vvCV4Omxvba6', 'goncalo', '2025-03-12', '985157864', 3, 'goncalo.m.neri16@hotmail.com', '2025-03-12', 'Ativo', 'uploads/11.jpg'),
+(6, '$2y$10$RwuUeJ87dU30Xtk/2AbkX.WmiFeiHVMRk17pffrYBoekqVY/Ctaca', 'Diogo', '2025-04-03', '93532523', 1, 'diogo@esenviseu.net', '2025-04-03', 'Ativo', 'upload/transferir.png');
 
 --
 -- Índices para tabelas despejadas
@@ -206,13 +234,15 @@ ALTER TABLE `armazem`
 -- Índices para tabela `categoria`
 --
 ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`Nome`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `ferramenta`
+-- Índices para tabela `ferramentas`
 --
-ALTER TABLE `ferramenta`
-  ADD PRIMARY KEY (`Ean`);
+ALTER TABLE `ferramentas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_idcategoria` (`idCategoria`),
+  ADD KEY `fk_idmarca` (`idMarca`);
 
 --
 -- Índices para tabela `loja`
@@ -233,6 +263,12 @@ ALTER TABLE `mensagem`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Índices para tabela `mensagens`
+--
+ALTER TABLE `mensagens`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `users`
 --
 ALTER TABLE `users`
@@ -244,16 +280,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `ferramentas`
+--
+ALTER TABLE `ferramentas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de tabela `mensagem`
 --
 ALTER TABLE `mensagem`
   MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de tabela `mensagens`
+--
+ALTER TABLE `mensagens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT COMMENT '1 = admin; 2 = utilizador; 3 = colaborador', AUTO_INCREMENT=9;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para despejos de tabelas
@@ -264,6 +318,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `armazem`
   ADD CONSTRAINT `armazem_ibfk_1` FOREIGN KEY (`Id_Loja`) REFERENCES `loja` (`ID`);
+
+--
+-- Limitadores para a tabela `ferramentas`
+--
+ALTER TABLE `ferramentas`
+  ADD CONSTRAINT `fk_idcategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`id`),
+  ADD CONSTRAINT `fk_idmarca` FOREIGN KEY (`idMarca`) REFERENCES `marca` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
