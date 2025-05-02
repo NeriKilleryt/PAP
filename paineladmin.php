@@ -72,39 +72,44 @@ try {
 
 <div class="container mt-4">
     <h2>Utilizadores</h2>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Perfil</th>
-                <th>Status</th>
-                <th>Data de Registo</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = $stmt_users->fetch(PDO::FETCH_ASSOC)): ?>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <tr>
-                    <td><?php echo htmlspecialchars($row['ID']); ?></td>
-                    <td><?php echo htmlspecialchars($row['Nome']); ?></td>
-                    <td><?php echo htmlspecialchars($row['Email']); ?></td>
-                    <td><?php echo $row['Perfil'] == 1 ? 'Administrador' : ($row['Perfil'] == 2 ? 'Utilizador' : 'Colaborador'); ?></td>
-                    <td><?php echo htmlspecialchars($row['status']); ?></td>
-                    <td><?php echo htmlspecialchars($row['Data_registo']); ?></td>
-                    <td>
-                        <a href="read.php?id=<?php echo htmlspecialchars($row['ID']); ?>" title="Editar Registo"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="delete.php" title="Eliminar Registo"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    </td>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Perfil</th>
+                    <th>Status</th>
+                    <th>Data de Registo</th>
+                    <th>Ações</th>
                 </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php while ($row = $stmt_users->fetch(PDO::FETCH_ASSOC)): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['ID']); ?></td>
+                        <td><?php echo htmlspecialchars($row['Nome']); ?></td>
+                        <td><?php echo htmlspecialchars($row['Email']); ?></td>
+                        <td><?php echo $row['Perfil'] == 1 ? 'Administrador' : ($row['Perfil'] == 2 ? 'Utilizador' : 'Colaborador'); ?></td>
+                        <td><?php echo htmlspecialchars($row['status']); ?></td>
+                        <td><?php echo htmlspecialchars($row['Data_registo']); ?></td>
+                        <td>
+                            <a href="read.php?id=<?php echo htmlspecialchars($row['ID']); ?>" class="btn btn-sm btn-primary" title="Editar Registo">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                            </a>
+                            <a href="delete.php" class="btn btn-sm btn-danger" title="Eliminar Registo">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
     <!-- Paginação para utilizadores -->
     <nav>
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             <?php for ($i = 1; $i <= ceil($total_users / $users_por_pagina); $i++): ?>
                 <li class="page-item <?php echo $i == $pagina_atual_users ? 'active' : ''; ?>">
                     <a class="page-link" href="?pagina_users=<?php echo $i; ?>"><?php echo $i; ?></a>
@@ -114,31 +119,33 @@ try {
     </nav>
 
     <h2>Mensagens</h2>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Mensagem</th>
-                <th>Data de Envio</th>
-            </tr>
-        </thead>
-        <tbody id="mensagens-tabela">
-            <?php while ($row = $stmt_mensagens->fetch(PDO::FETCH_ASSOC)): ?>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <tr>
-                    <td><?php echo htmlspecialchars($row['id']); ?></td>
-                    <td><?php echo htmlspecialchars($row['nome']); ?></td>
-                    <td><?php echo htmlspecialchars($row['email']); ?></td>
-                    <td><?php echo htmlspecialchars($row['mensagem']); ?></td>
-                    <td><?php echo htmlspecialchars($row['data_envio']); ?></td>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Mensagem</th>
+                    <th>Data de Envio</th>
                 </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="mensagens-tabela">
+                <?php while ($row = $stmt_mensagens->fetch(PDO::FETCH_ASSOC)): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['id']); ?></td>
+                        <td><?php echo htmlspecialchars($row['nome']); ?></td>
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                        <td><?php echo htmlspecialchars($row['mensagem']); ?></td>
+                        <td><?php echo htmlspecialchars($row['data_envio']); ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
     <!-- Paginação para mensagens -->
     <nav>
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             <?php for ($i = 1; $i <= ceil($total_mensagens / $mensagens_por_pagina); $i++): ?>
                 <li class="page-item <?php echo $i == $pagina_atual_mensagens ? 'active' : ''; ?>">
                     <a class="page-link" href="?pagina_mensagens=<?php echo $i; ?>"><?php echo $i; ?></a>
