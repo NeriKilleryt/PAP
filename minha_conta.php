@@ -19,10 +19,12 @@ include 'inc/config.php';
 $conn = connect_db();
 
 try {
-    $sql = "SELECT * FROM users";
+    $user_id = $_SESSION['id']; // Obtém o ID do utilizador logado da sessão
+    $sql = "SELECT * FROM users WHERE id = :id"; // Filtra pelo ID do utilizador
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
-    $ferramentas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Erro ao buscar users: " . $e->getMessage());
 }
@@ -35,8 +37,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // Verificar se o formulário foi enviado
     if ($_SERVER['REQUEST_METHOD'] === 'POST') 
         // Capturar os dados do formulário
-        $nome = htmlspecialchars($_POST['nome']);
-        $email = htmlspecialchars($_POST['email']);
+        $nome = htmlspecialchars($_POST['Nome']);
+        $email = htmlspecialchars($_POST['Email']);
         $password = htmlspecialchars($_POST['password']);
         $data_nascimento = htmlspecialchars($_POST['data_nascimento']);
         $contacto = htmlspecialchars($_POST['contacto']);
@@ -54,10 +56,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <img src="<?php echo htmlspecialchars($user['imagem']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($user['nome']); ?>">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <?php echo htmlspecialchars($user['nome']); ?></h5>
-                        <p class="card-text">Email: <?php echo htmlspecialchars($user['email']); ?></p>
-                        <p class="card-text">Data de Nascimento: <?php echo htmlspecialchars($user['data_nascimento']); ?></p>
-                        <p class="card-text">Contacto: <?php echo htmlspecialchars($user['contacto']); ?></p>
+                            <p class="card-text">Nome: <?php echo htmlspecialchars($user['Nome']); ?></h5>
+                            <p class="card-text">Email: <?php echo htmlspecialchars($user['Email']); ?></p>
+                            <p class="card-text">Data de Nascimento: <?php echo htmlspecialchars($user['Data_nascimento']); ?></p>
+                            <p class="card-text">Contacto: <?php echo htmlspecialchars($user['Contacto']); ?></p>
+                        </h5>
                     </div>    
                 </div>
             </div>
