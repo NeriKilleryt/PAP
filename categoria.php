@@ -38,40 +38,45 @@ if ($id > 0) {
 
             if ($ferramentas) {
                 echo "<div class='container mt-5'>";
+                echo "<div class='row'>";
                 foreach ($ferramentas as $ferramenta) {
-                    echo "<div class='row mb-4'>";
-                    
+                    echo "<div class='col-md-4 mb-4'>";
+                    echo "<div class='card h-100'>";
+
                     // Imagem da ferramenta
-                    echo "<div class='col-md-4'>";
                     if (!empty($ferramenta['imagem'])) {
-                        echo "<img src='" . htmlspecialchars($ferramenta['imagem']) . "' class='img-fluid rounded' alt='Imagem da ferramenta'>";
+                        echo "<img src='" . htmlspecialchars($ferramenta['imagem']) . "' class='card-img-top' alt='Imagem da ferramenta'>";
                     } else {
-                        echo "<img src='public/images/default-tool.jpg' class='img-fluid rounded' alt='Imagem padrão'>";
+                        echo "<img src='public/images/default-tool.jpg' class='card-img-top' alt='Imagem padrão'>";
                     }
-                    echo "</div>";
 
                     // Detalhes da ferramenta
-                    echo "<div class='col-md-8'>";
-                    echo "<h3>" . htmlspecialchars($ferramenta['nome']) . "</h3>";
-                    echo "<p><strong>Descrição:</strong> " . htmlspecialchars($ferramenta['descricao']) . "</p>";
-                    echo "<p><strong>Marca:</strong> " . htmlspecialchars($ferramenta['nomeMarca'] ?? 'Marca desconhecida') . "</p>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>" . htmlspecialchars($ferramenta['nome']) . "</h5>";
+                    echo "<p class='card-text'><strong>Descrição:</strong> " . htmlspecialchars($ferramenta['descricao']) . "</p>";
+                    echo "<p class='card-text'><strong>Marca:</strong> " . htmlspecialchars($ferramenta['nomeMarca'] ?? 'Marca desconhecida') . "</p>";
+                    echo "</div>";
 
-                    echo "<h4>Informações das Lojas</h4>";
-                    echo "<ul>";
+                    // Links das lojas
+                    echo "<div class='card-footer'>";
+                    echo "<h6>Informações das Lojas</h6>";
+                    echo "<ul class='list-unstyled'>";
                     if (!empty($ferramenta['loja1_nome'])) {
-                        echo "<li><strong>" . htmlspecialchars($ferramenta['loja1_nome']) . ":</strong> <a href='" . htmlspecialchars($ferramenta['loja1_link']) . "' target='_blank'>Visitar Loja</a></li>";
+                        echo "<li><a href='" . htmlspecialchars($ferramenta['loja1_link']) . "' target='_blank'>" . htmlspecialchars($ferramenta['loja1_nome']) . "</a></li>";
                     }
                     if (!empty($ferramenta['loja2_nome'])) {
-                        echo "<li><strong>" . htmlspecialchars($ferramenta['loja2_nome']) . ":</strong> <a href='" . htmlspecialchars($ferramenta['loja2_link']) . "' target='_blank'>Visitar Loja</a></li>";
+                        echo "<li><a href='" . htmlspecialchars($ferramenta['loja2_link']) . "' target='_blank'>" . htmlspecialchars($ferramenta['loja2_nome']) . "</a></li>";
                     }
                     if (!empty($ferramenta['loja3_nome'])) {
-                        echo "<li><strong>" . htmlspecialchars($ferramenta['loja3_nome']) . ":</strong> <a href='" . htmlspecialchars($ferramenta['loja3_link']) . "' target='_blank'>Visitar Loja</a></li>";
+                        echo "<li><a href='" . htmlspecialchars($ferramenta['loja3_link']) . "' target='_blank'>" . htmlspecialchars($ferramenta['loja3_nome']) . "</a></li>";
                     }
                     echo "</ul>";
                     echo "</div>";
 
                     echo "</div>";
+                    echo "</div>";
                 }
+                echo "</div>";
                 echo "</div>";
             } else {
                 echo "<p>Nenhuma ferramenta encontrada para esta categoria.</p>";
