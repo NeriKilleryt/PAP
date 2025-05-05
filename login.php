@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($user['Perfil'] == 1) { // Perfil 1 é administrador
                     header("Location: paineladmin.php");
                 } else { // Outros perfis
-                    header("Location: home.php");
+                    header("Location: index.php");
                 }
                 exit();
             } else {
