@@ -8,6 +8,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || ($_SESSIO
 }
 
 require_once 'inc/config.php'; // Inclui a conexão com a base de dados
+include __DIR__ . '/inc/header.php';
 
 // Inicializa a conexão com o banco de dados
 $conn = connect_db();
@@ -54,7 +55,6 @@ $conn = null; // Fecha a conexão
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Categoria</title>
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
@@ -82,6 +82,9 @@ $conn = null; // Fecha a conexão
             <a href="paineladmin.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php
+// Incluir o rodapé
+include __DIR__ . '/inc/footer.php';
+?>
