@@ -75,11 +75,6 @@ if (!isset($_SESSION)) {
                         echo '<li><a class="dropdown-item" href="mensagem.php">Minha mensagens</a></li>';
                         echo '<li><hr class="dropdown-divider"></li>';
 
-                        // Opção para editar o perfil
-                        if (isset($_SESSION['id'])) {
-                            echo '<li><a class="dropdown-item" href="update.php?id=' . htmlspecialchars($_SESSION['id']) . '">Editar Perfil</a></li>';
-                            echo '<li><hr class="dropdown-divider"></li>';
-                        }
 
                         // Opção para terminar a sessão
                         echo '<li><a class="dropdown-item" href="logout.php">Terminar Sessão</a></li>

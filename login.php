@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['nome'] = $user['Nome'];
                 $_SESSION['perfil'] = $user['Perfil']; // Supondo que você tenha um campo 'Perfil' na tabela
                 $_SESSION['contacto'] = $user['Contacto'];
+                $_SESSION['id'] = $user['id']; // Certifique-se de que o ID do utilizador está sendo armazenado
 
                 // Redireciona com base no perfil
                 if ($user['Perfil'] == 1) { // Perfil 1 é administrador

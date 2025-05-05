@@ -50,13 +50,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <div class="row g-4">
         <?php if (!empty($users)): ?>
             <?php foreach ($users as $user): ?>
-
             <div class="col-md-12">
                 <div class="card h-95">
-                    <img src="<?php echo htmlspecialchars($user['imagem']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($user['nome']); ?>">
+                    <img src="<?php echo htmlspecialchars($user['imagem']); ?>" 
+                         class="card-img-top" 
+                         alt="<?php echo htmlspecialchars($user['Nome']); ?>" 
+                         style="width: 150px; height: auto;">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <p class="card-text">Nome: <?php echo htmlspecialchars($user['Nome']); ?></h5>
+                            <p class="card-text">Nome: <?php echo htmlspecialchars($user['Nome']); ?></p>
                             <p class="card-text">Email: <?php echo htmlspecialchars($user['Email']); ?></p>
                             <p class="card-text">Data de Nascimento: <?php echo htmlspecialchars($user['Data_nascimento']); ?></p>
                             <p class="card-text">Contacto: <?php echo htmlspecialchars($user['Contacto']); ?></p>
