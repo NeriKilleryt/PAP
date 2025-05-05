@@ -8,7 +8,7 @@ require(__DIR__ . '/inc/header.php');
         <!-- Apresentação do formulário -->
         <section class="col-4 border rounded bg-primary-subtle text-primary-emphasis">
             <p class="h2 d-flex justify-content-center">Registar</p>
-            <form action="insere_user.php" method="post" enctype="multipart/form-data">
+            <form action="insere_user.php" method="post">
                 <div class="mb-4">
                     <input type="text" class="form-control" name="nome" style="width:300;" placeholder="Nome Válido" required>
                 </div>
@@ -27,14 +27,9 @@ require(__DIR__ . '/inc/header.php');
                 <div class="mb-4">
                     <select class="form-control" name="perfil" style="width:300;" required>
                         <option value="">Selecione o Perfil</option>
-                        <option value="Colaborador">Colaborador</option>
-                        <option value="Utilizador">Utilizador</option>
+                        <option value="3">Colaborador</option>
+                        <option value="2">Utilizador</option>
                     </select>
-                </div>
-                <div class="mb-4">
-                    <label for="fileSelect">Filename:</label>
-                    <input type="file" name="photo" id="fileSelect">
-                    <p><strong>Note:</strong> Only .jpg, .jpeg, .gif, .png formats allowed to a max size of 5 MB.
                 </div>
 
                 <div class="d-grid gap-2 mb-3">
