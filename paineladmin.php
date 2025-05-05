@@ -88,14 +88,14 @@ try {
             <tbody>
                 <?php while ($row = $stmt_users->fetch(PDO::FETCH_ASSOC)): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['ID']); ?></td>
+                        <td><?php echo htmlspecialchars($row['id']); ?></td>
                         <td><?php echo htmlspecialchars($row['Nome']); ?></td>
                         <td><?php echo htmlspecialchars($row['Email']); ?></td>
                         <td><?php echo $row['Perfil'] == 1 ? 'Administrador' : ($row['Perfil'] == 2 ? 'Utilizador' : 'Colaborador'); ?></td>
                         <td><?php echo htmlspecialchars($row['status']); ?></td>
                         <td><?php echo htmlspecialchars($row['Data_registo']); ?></td>
                         <td>
-                            <a href="read.php?id=<?php echo htmlspecialchars($row['ID']); ?>" class="btn btn-sm btn-primary" title="Editar Registo">
+                            <a href="read.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-sm btn-primary" title="Editar Registo">
                                 <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                             </a>
                             <a href="delete.php" class="btn btn-sm btn-danger" title="Eliminar Registo">
