@@ -67,6 +67,7 @@ if (!isset($_SESSION)) {
                             echo '<li><a class="dropdown-item" href="paineladmin.php">Painel de administração</a></li>';
                             echo '<li><a class="dropdown-item" href="add_tool.php">Adicionar Ferramenta</a></li>';
                             echo '<li><a class="dropdown-item" href="add_categoria.php">Adicionar Categoria</a></li>';
+                            echo '<li><a class="dropdown-item" href="add_marca.php">Adicionar Marca</a></li>';
                             echo '<li><hr class="dropdown-divider"></li>';
                         }
 
