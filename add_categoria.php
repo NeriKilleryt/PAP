@@ -79,7 +79,7 @@ $conn = null; // Fecha a conexão
                 <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" required>
             </div>
             <button type="submit" class="btn btn-primary">Adicionar</button>
-            <a href="paineladmin.php" class="btn btn-secondary">Voltar</a>
+            <a href="index.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
 </body>
