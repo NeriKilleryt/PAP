@@ -72,8 +72,8 @@ if (!isset($_SESSION)) {
                         }
 
                         // Opções para todos os utilizadores
-                        echo '<li><a class="dropdown-item" href="minha_conta.php">Minha conta</a></li>';
-                        echo '<li><a class="dropdown-item" href="mensagem.php">Minha mensagens</a></li>';
+                        echo '<li><a class="dropdown-item" href="minha_conta.php">Minha Conta</a></li>';
+                        echo '<li><a class="dropdown-item" href="mensagem.php">Minha Mensagem</a></li>';
                         echo '<li><hr class="dropdown-divider"></li>';
 
 

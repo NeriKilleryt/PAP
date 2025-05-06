@@ -15,7 +15,7 @@ if ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3) {
     exit;
 }
 
-$title = 'Dashboard';
+$title = 'Painel administração';
 // Incluir o cabeçalho
 require(__DIR__ . '/inc/header.php');
 
@@ -25,7 +25,7 @@ include 'inc/config.php';
 // Conectar ao banco de dados usando PDO
 $link = connect_db();
 
-echo "<h1 class='container mt-3'>Dashboard</h1>";
+echo "<h1 class='container mt-3'>Painel administração</h1>";
 
 // Função para contar registos
 function contaRegistos($link, $tabela) {
@@ -56,7 +56,7 @@ try {
     $stmt_users->execute();
 
     // Lista mensagens com paginação
-    $sql_mensagens = "SELECT * FROM mensagens LIMIT :offset, :limit";
+    $sql_mensagens = "SELECT * FROM mensagens ORDER BY id ASC LIMIT :offset, :limit";
     $stmt_mensagens = $link->prepare($sql_mensagens);
     $stmt_mensagens->bindValue(':offset', $offset_mensagens, PDO::PARAM_INT);
     $stmt_mensagens->bindValue(':limit', $mensagens_por_pagina, PDO::PARAM_INT);
