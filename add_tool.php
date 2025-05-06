@@ -140,6 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Adicionar Ferramenta</button>
+            <a href="index.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
 
