@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="url" id="loja3_link" name="loja3_link" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Adicionar Ferramenta</button>
+            <button type="submit" class="btn btn-primary">Adicionar Ferramenta</button>
             <a href="index.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
