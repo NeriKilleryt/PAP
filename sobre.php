@@ -2,7 +2,7 @@
 //vai incluir o ficheiro header.php que se encontra na pasta inc.
 require(__DIR__ . '/inc/header.php');
 
-$title = 'Sobre a WikiNéri';
+$title = 'Sobre a WikiFerramentas';
 ?>
 
 <style>
@@ -40,9 +40,9 @@ $title = 'Sobre a WikiNéri';
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card mb-5 card-border-radius">
-        <img src="public/images/Log.ico" class="card-img-top mx-auto mt-3" alt="Logo">
+        <img src="public/images/logo (5).ico" class="card-img-top mx-auto mt-3" alt="Logo">
         <div class="card-body text-center">
-            <h5 class="card-title">Sobre a WikiNéri</h5>
+            <h5 class="card-title">Sobre a WikiFerramentas</h5>
             <p class="card-text">Pode saber os preços das ferramentas modernas e onde pode comprar as ferramentas. Além disso, pode criar a sua própria lista personalizada.</p>
             <button class="ler-mais">Ler mais</button>
         </div>
