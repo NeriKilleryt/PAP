@@ -44,7 +44,6 @@ $title = 'Sobre a WikiFerramentas';
         <div class="card-body text-center">
             <h5 class="card-title">Sobre a WikiFerramentas</h5>
             <p class="card-text">Pode saber os preços das ferramentas modernas e onde pode comprar as ferramentas. Além disso, pode criar a sua própria lista personalizada.</p>
-            <button class="ler-mais">Ler mais</button>
         </div>
     </div>
 </div>
