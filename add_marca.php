@@ -71,7 +71,7 @@ $conn = null; // Fecha a conexão
                 <input type="text" class="form-control" id="contacto" name="contacto" required>
             </div>
             <button type="submit" class="btn btn-primary">Adicionar</button>
-            <a href="paineladmin.php" class="btn btn-secondary">Voltar</a>
+            <a href="index.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
 </body>
