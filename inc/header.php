@@ -6,6 +6,7 @@ if (!isset($_SESSION)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" href="public/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="public/css/style.css"> <!-- Adicione um arquivo CSS personalizado -->
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,44 +51,43 @@ if (!isset($_SESSION)) {
                     </form>
                 </div>
 
-                <div class="d-flex">
+                <div class="d-flex align-items-center">
                     <?php
-                    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-                        // Verifica se o usuário é administrador (Perfil = 1 ou 3)
-                        $is_admin = ($_SESSION['perfil'] == 1 || $_SESSION['perfil'] == 3);
+                        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+                            // Verifica se o usuário é administrador (Perfil = 1 ou 3)
+                            $is_admin = ($_SESSION['perfil'] == 1 || $_SESSION['perfil'] == 3);
 
-                        echo '<header class="p-3 mb-3 border-bottom">
-                                <div class="dropdown text-end me-5">
-                                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://github.com/mdo.png" alt="Perfil" width="32" height="32" class="rounded-circle"> ' . htmlspecialchars($_SESSION['nome']) . '
-                                    </a>
-                                    <ul class="dropdown-menu text-small">';
+                            // Primeiro menu dropdown (Perfil do utilizador)
+                            echo '<div class="dropdown me-5">
+                                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="https://github.com/mdo.png" alt="Perfil" width="32" height="32" class="rounded-circle"> ' . htmlspecialchars($_SESSION['nome']) . '
+                                </a>
+                                <ul class="dropdown-menu text-small" style="min-width: 200px;">';
 
-                        if ($is_admin) {
-                            // Opções para administradores
-                            echo '<li><a class="dropdown-item" href="paineladmin.php">Painel de administração</a></li>';
-                            echo '<li><a class="dropdown-item" href="add_tool.php">Adicionar Ferramenta</a></li>';
-                            echo '<li><a class="dropdown-item" href="add_categoria.php">Adicionar Categoria</a></li>';
-                            echo '<li><a class="dropdown-item" href="add_marca.php">Adicionar Marca</a></li>';
-                            echo '<li><a class="dropdown-item" href="add_loja.php">Adicionar Loja</a></li>';
+                            if ($is_admin) {
+                                // Opções para administradores
+                                echo '<li><a class="dropdown-item" href="paineladmin.php">Painel de Admin</a></li>';
+                                echo '<li><a class="dropdown-item" href="add_tool.php">Adicionar Ferramenta</a></li>';
+                                echo '<li><a class="dropdown-item" href="add_categoria.php">Adicionar Categoria</a></li>';
+                                echo '<li><a class="dropdown-item" href="add_marca.php">Adicionar Marca</a></li>';
+                                echo '<li><a class="dropdown-item" href="add_loja.php">Adicionar Loja</a></li>';
+                                echo '<li><hr class="dropdown-divider"></li>';
+                            }
+
+                            // Opções para todos os utilizadores
+                            echo '<li><a class="dropdown-item" href="minha_conta.php">Minha Conta</a></li>';
+                            echo '<li><a class="dropdown-item" href="mensagem.php">Minhas Mensagens</a></li>';
                             echo '<li><hr class="dropdown-divider"></li>';
+
+                            // Opção para terminar a sessão
+                            echo '<li><a class="dropdown-item" href="logout.php">Terminar Sessão</a></li>';
+                            echo '</ul>
+                                </div>';
+                        } else {
+                            // Opções para utilizadores não logados
+                            echo "<a href='login.php' class='btn btn-outline-success me-2'>Login</a>";
+                            echo "<a href='registo_user.php' class='btn btn-info ms-2'>Registo</a>";
                         }
-
-                        // Opções para todos os utilizadores
-                        echo '<li><a class="dropdown-item" href="minha_conta.php">Minha Conta</a></li>';
-                        echo '<li><a class="dropdown-item" href="mensagem.php">Minha Mensagem</a></li>';
-                        echo '<li><hr class="dropdown-divider"></li>';
-
-
-                        // Opção para terminar a sessão
-                        echo '<li><a class="dropdown-item" href="logout.php">Terminar Sessão</a></li>
-                                    </ul>
-                                </div>
-                            </header>';
-                    } else {
-                        echo "<a href='login.php' class='btn btn-outline-success me-2'>Login</a>";
-                        echo "<a href='registo_user.php' class='btn btn-info'>Registo</a>";
-                    }
                     ?>
                 </div>
             </div>
